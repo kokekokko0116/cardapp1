@@ -2,6 +2,10 @@
 // var_dump($_POST);
 // exit();
 include("functions.php");
+session_start();
+check_session_id();
+$username=$_SESSION["username"];
+
 
 
 if (
@@ -25,7 +29,7 @@ $amount = $_POST["amount"];
 // DB接続
 $pdo = connect_db();
 
-$sql = 'INSERT INTO cards(id, series, number, rarelity, name, price, amount, updated_at) VALUES(NULL, :series, :number, :rarelity, :name, :price, :amount, now())';
+$sql = "INSERT INTO cards(id, username, series, number, rarelity, name, price, amount, updated_at) VALUES(NULL,'$username', :series, :number, :rarelity, :name, :price, :amount, now())";
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':series', $series, PDO::PARAM_STR);

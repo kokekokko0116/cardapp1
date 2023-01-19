@@ -3,6 +3,8 @@ $id = $_GET["id"];
 
 // id受け取り
 include("functions.php");
+session_start();
+check_session_id();
 $pdo = connect_db();
 
 // DB接続

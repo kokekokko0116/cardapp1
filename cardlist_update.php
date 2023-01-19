@@ -2,7 +2,8 @@
 // var_dump($_POST);
 // exit();
 include("functions.php");
-
+session_start();
+check_session_id();
 
 
 if (
